@@ -15,19 +15,25 @@ public abstract class ShipModule extends Entity implements MenuSpawnable{
 	String moduleType;
 	int relX, relY;
 	boolean menuOpened;
+	public boolean nextLevel=false;
 	int modLevel;
-
-	public ShipModule(Polygon b, String modType, int topX, int topY) {
+	public int health;
+	public int clickCount;
+	public ShipModule(Polygon b, String modType, int topX, int topY, int maxHealth) {
 		super(topX,topY,0,0, 0.0, "");
+		health = maxHealth;
 		moduleType = modType;
 		bounds = b;
 		resources = new ArrayList<Entity>();
 		menuOpened = false;
 		modLevel = 0;
+		clickCount = 0;
 	}
 
 	@Override
-	public abstract void whenClicked(int x, int y);
+	public void whenClicked(int x, int y){
+		clickCount++;
+	}
 		
 	
 	@Override
@@ -49,6 +55,10 @@ public abstract class ShipModule extends Entity implements MenuSpawnable{
 	
 	public ArrayList<Entity> getResources(){
 		return resources;
+	}
+	
+	public void setNextLevelPoss(){
+		nextLevel = true;
 	}
 
 }
