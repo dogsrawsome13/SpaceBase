@@ -41,7 +41,7 @@ public class GameController {
 		JFrame realGui = gui.getThis();
 		
 		realGui.setVisible(true);
-		ImportManager.soundControl("music", "loop");
+		//ImportManager.soundControl("music", "loop");
 	}
 	
 	public void run() {
@@ -56,9 +56,11 @@ public class GameController {
 		if(currentLevel.objectiveMet()){
 			try{
 				currentLevel = currentLevel.getNextLevel();
+				currentLevel.initialize();
 				g.initReftoGUIPane(currentLevel.getEnts());
 			}
 			catch(NullPointerException e){
+				System.out.println("your shirts null boi");
 				g.dispose();
 			}
 		}
