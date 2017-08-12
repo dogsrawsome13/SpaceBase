@@ -2,7 +2,7 @@ package Levels;
 
 import Entities.*;
 
-public class Travel extends Level {
+public class TravelLevel extends Level {
 	
 	int travelTime;
 	int tickTime;
@@ -12,7 +12,7 @@ public class Travel extends Level {
 	double riskFactor;
 	Level dest;
 	
-	public Travel(int dist,int speed,double risk, Ship e, Level destination) {
+	public TravelLevel(int dist,int speed,double risk, Ship e, Level destination) {
 		super(e);
 		dest = destination;
 		travelTime = dist/speed;
